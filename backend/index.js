@@ -26,7 +26,7 @@ db.connect(err => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Zona Bakaran API is running 🚀");
+  res.send("Zona Bakaran API is running");
 });
 
 app.listen(process.env.PORT || 9000, () => {
