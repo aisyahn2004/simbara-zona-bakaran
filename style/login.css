@@ -1,0 +1,21 @@
+/* COLOR PALETTE */
+:root {
+    --maroon: #630000;
+    --cotton: #EDEBDD;
+    --ruby: #A6171C;
+    --natural: #D6D0C5;
+    --sunny: #F1C045;
+    --neutral: #FFFFFF;
+}
+
+/* STYLE DASAR */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--neutral);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
