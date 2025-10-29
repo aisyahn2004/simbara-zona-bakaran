@@ -2,6 +2,8 @@ import express from "express";
 import mysql from "mysql2";
 import dotenv from "dotenv";
 import cors from "cors";
+import db from "./config/db.js";
+import authRoutes from "./routes/authroutes.js";
 
 dotenv.config();
 
@@ -10,20 +12,17 @@ app.use(cors());
 app.use(express.json());
 
 // Tes koneksi ke database
-const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-});
-
-db.connect(err => {
-  if (err) {
-    console.error("Database connection failed:", err.message);
-  } else {
+(async () => {
+  try {
+    const conn = await db.getConnection();
     console.log("Connected to MySQL database");
+    conn.release();
+  } catch (err) {
+    console.error("Database connection failed:", err.message);
   }
-});
+})();
+
+app.use("/api/auth", authRoutes);
 
 app.get("/", (req, res) => {
   res.send("Zona Bakaran API is running");
