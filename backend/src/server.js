@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 import db from "./config/db.js";
 import authRoutes from "./routes/authroutes.js";
+import transactionRoutes from "./routes/transaksiroutes.js";
+import stokRoutes from "./routes/stokroutes.js";
 
 dotenv.config();
 
@@ -23,6 +25,8 @@ app.use(express.json());
 })();
 
 app.use("/api/auth", authRoutes);
+app.use("/api/transaksi", transactionRoutes);
+app.use("/api/admin", stokRoutes);
 
 app.get("/", (req, res) => {
   res.send("Zona Bakaran API is running");

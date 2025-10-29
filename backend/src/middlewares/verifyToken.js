@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 
 const verifyToken = (request, h) => {
   const authHeader = request.headers.authorization;
@@ -13,12 +13,7 @@ const verifyToken = (request, h) => {
   const token = authHeader.split(' ')[1];
   try {
     const decoded = jwt.verify(token, 'your-secret-key');
-
-    // Tambahkan ini:
-    request.auth = {
-      credentials: decoded,
-    };
-
+    request.auth = { credentials: decoded };
     return h.continue;
   } catch (err) {
     return h.response({
@@ -27,3 +22,5 @@ const verifyToken = (request, h) => {
     }).code(401).takeover();
   }
 };
+
+export default verifyToken;
