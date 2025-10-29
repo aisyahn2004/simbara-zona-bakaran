@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZonaBakaran | Transaksi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            maroon: '#630000',
+            ruby: '#A6171C',
+            cotton: '#EDEBDD',
+            natural: '#D6D0C5',
+            sunny: '#F1C045',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-cotton text-maroon font-sans flex">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-maroon text-cotton min-h-screen p-6 fixed left-0 top-0">
+    <h2 class="text-2xl font-bold mb-8">ZonaBakaran</h2>
+    <nav class="space-y-3">
+      <a href="beranda.html" class="block py-2 px-3 rounded hover:bg-ruby">🏠 Beranda</a>
+      <a href="transaksii.html" class="block py-2 px-3 rounded bg-ruby">💳 Transaksi</a>
+      <a href="#" class="block py-2 px-3 rounded hover:bg-ruby">📦 Produk</a>
+      <a href="#" class="block py-2 px-3 rounded hover:bg-ruby">📊 Laporan</a>
+      <a href="#" class="block py-2 px-3 rounded hover:bg-ruby">⚙️ Pengaturan</a>
+    </nav>
+  </aside>
+
+  <!-- Konten utama -->
+  <main class="flex-1 ml-64">
+
+    <!-- Header (Diperbaiki agar fixed di atas) -->
+    <header class="bg-maroon text-cotton shadow-sm p-4 flex justify-between items-center fixed top-0 left-64 right-0 z-50">
+      <div class="flex items-center gap-3">
+        <img src="/frontend/logo.png" alt="Logo ZonaBakaran" class="w-10 h-10 rounded-full">
+        <h1 class="text-xl font-bold tracking-wide">Sistem Manajemen</h1>
+      </div>
+      <button class="bg-sunny text-maroon px-4 py-2 rounded font-semibold hover:bg-ruby hover:text-cotton transition">
+        Logout
+      </button>
+    </header>
+
+    <!-- Konten halaman  -->
+    <section class="p-8 mt-24">
+      <h2 class="text-2xl font-bold mb-2">Daftar Transaksi</h2>
+      <p class="text-sm text-ruby mb-6">Kelola dan pantau semua transaksi pelanggan di ZonaBakaran</p>
+
+      <!-- Statistik ringkas -->
+      <div class="grid grid-cols-4 gap-4 mb-8">
+        <div class="bg-white shadow p-4 rounded-lg text-center border-t-4 border-sunny">
+          <h3 class="text-lg font-semibold">Total Transaksi</h3>
+          <p class="text-2xl font-bold mt-2">2,401</p>
+        </div>
+        <div class="bg-white shadow p-4 rounded-lg text-center border-t-4 border-ruby">
+          <h3 class="text-lg font-semibold">Transaksi Baru</h3>
+          <p class="text-2xl font-bold mt-2">1,701</p>
+        </div>
+        <div class="bg-white shadow p-4 rounded-lg text-center border-t-4 border-green-600">
+          <h3 class="text-lg font-semibold">Selesai</h3>
+          <p class="text-2xl font-bold mt-2">1,405</p>
+        </div>
+        <div class="bg-white shadow p-4 rounded-lg text-center border-t-4 border-gray-400">
+          <h3 class="text-lg font-semibold">Dibatalkan</h3>
+          <p class="text-2xl font-bold mt-2">99</p>
+        </div>
+      </div>
+
+      <!-- Tabel Transaksi -->
+      <div class="bg-white shadow rounded-lg p-6">
+        <div class="flex justify-between items-center mb-4">
+          <input type="text" placeholder="Cari transaksi..." class="border border-natural rounded px-3 py-2 w-1/3 focus:outline-none focus:ring-2 focus:ring-sunny">
+          <button class="bg-sunny text-maroon px-4 py-2 rounded font-semibold hover:bg-ruby hover:text-cotton transition">+ Tambah Transaksi</button>
+        </div>
+
+        <table class="min-w-full text-sm text-left border-collapse">
+          <thead class="bg-natural text-maroon">
+            <tr>
+              <th class="p-3">Produk</th>
+              <th class="p-3">Pelanggan</th>
+              <th class="p-3">Tanggal</th>
+              <th class="p-3">Jumlah</th>
+              <th class="p-3">Status</th>
+              <th class="p-3">Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b hover:bg-cotton">
+              <td class="p-3 font-medium">Dimsum Mentai</td>
+              <td class="p-3">Rizki Pratama</td>
+              <td class="p-3">27 Okt 2025</td>
+              <td class="p-3 font-semibold">Rp20.000</td>
+              <td class="p-3"><span class="bg-green-100 text-green-700 px-2 py-1 rounded">Selesai</span></td>
+              <td class="p-3"><button class="text-ruby hover:underline">Detail</button></td>
+            </tr>
+            <tr class="border-b hover:bg-cotton">
+              <td class="p-3 font-medium">Dimsum Original</td>
+              <td class="p-3">Dewi Rahma</td>
+              <td class="p-3">26 Okt 2025</td>
+              <td class="p-3 font-semibold">Rp15.000</td>
+              <td class="p-3"><span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded">Pending</span></td>
+              <td class="p-3"><button class="text-ruby hover:underline">Detail</button></td>
+            </tr>
+            <tr class="border-b hover:bg-cotton">
+              <td class="p-3 font-medium">Dimsum Mentai, Dimsum Original</td>
+              <td class="p-3">Budi Santoso</td>
+              <td class="p-3">25 Okt 2025</td>
+              <td class="p-3 font-semibold">Rp35.000</td>
+              <td class="p-3"><span class="bg-gray-200 text-gray-700 px-2 py-1 rounded">Dibatalkan</span></td>
+              <td class="p-3"><button class="text-ruby hover:underline">Detail</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

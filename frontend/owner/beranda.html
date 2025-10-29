@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZonaBakaran | Beranda</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            maroon: '#630000',
+            ruby: '#A6171C',
+            cotton: '#EDEBDD',
+            natural: '#D6D0C5',
+            sunny: '#F1C045',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-cotton text-maroon font-sans flex">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-maroon text-cotton min-h-screen p-6 fixed left-0 top-0">
+    <h2 class="text-2xl font-bold mb-8">ZonaBakaran</h2>
+    <nav class="space-y-3">
+      <a href="beranda.html" class="block py-2 px-3 rounded bg-ruby">🏠 Beranda</a>
+      <a href="transaksii.html" class="block py-2 px-3 rounded hover:bg-ruby">💳 Transaksi</a>
+      <a href="#" class="block py-2 px-3 rounded hover:bg-ruby">📦 Produk</a>
+      <a href="#" class="block py-2 px-3 rounded hover:bg-ruby">📊 Laporan</a>
+      <a href="#" class="block py-2 px-3 rounded hover:bg-ruby">⚙️ Pengaturan</a>
+    </nav>
+  </aside>
+
+  <!-- Konten utama -->
+  <main class="flex-1 ml-64">
+
+    <!-- Header -->
+    <header class="bg-maroon text-cotton shadow-sm p-4 flex justify-between items-center fixed top-0 left-64 right-0 z-50">
+      <div class="flex items-center gap-3">
+        <img src="/frontend/logo.png" alt="Logo ZonaBakaran" class="w-10 h-10 rounded-full">
+        <h1 class="text-xl font-bold tracking-wide">Sistem Manajemen</h1>
+      </div>
+      <button class="bg-sunny text-maroon px-4 py-2 rounded font-semibold hover:bg-ruby hover:text-cotton transition">
+        Logout
+      </button>
+    </header>
+
+    <!-- Isi halaman -->
+    <section class="p-8 mt-24">
+      <h2 class="text-2xl font-bold mb-2">Selamat Datang di ZonaBakaran!</h2>
+      <p class="text-sm text-ruby mb-6">Pantau performa dan aktivitas usaha kamu secara ringkas di halaman ini.</p>
+
+      <!-- Statistik utama -->
+      <div class="grid grid-cols-4 gap-4 mb-8">
+        <div class="bg-white shadow p-4 rounded-lg text-center border-t-4 border-sunny">
+          <h3 class="text-lg font-semibold">Total Penjualan</h3>
+          <p class="text-2xl font-bold mt-2">Rp 12.540.000</p>
+        </div>
+        <div class="bg-white shadow p-4 rounded-lg text-center border-t-4 border-green-600">
+          <h3 class="text-lg font-semibold">Transaksi Selesai</h3>
+          <p class="text-2xl font-bold mt-2">1,405</p>
+        </div>
+        <div class="bg-white shadow p-4 rounded-lg text-center border-t-4 border-ruby">
+          <h3 class="text-lg font-semibold">Pesanan Baru</h3>
+          <p class="text-2xl font-bold mt-2">62</p>
+        </div>
+        <div class="bg-white shadow p-4 rounded-lg text-center border-t-4 border-gray-400">
+          <h3 class="text-lg font-semibold">Dibatalkan</h3>
+          <p class="text-2xl font-bold mt-2">14</p>
+        </div>
+      </div>
+
+      <!-- Aktivitas terakhir -->
+      <div class="bg-white shadow rounded-lg p-6 mb-8">
+        <h3 class="text-lg font-bold mb-4">📅 Aktivitas Terbaru</h3>
+        <ul class="divide-y divide-natural">
+          <li class="py-3 flex justify-between">
+            <span>Pemesanan <b>Dimsum Mentai</b> oleh <b>Rizki Pratama</b></span>
+            <span class="text-sm text-green-700 font-semibold">Selesai</span>
+          </li>
+          <li class="py-3 flex justify-between">
+            <span>Pemesanan <b>Dimsum Original</b> oleh <b>Dewi Rahma</b></span>
+            <span class="text-sm text-yellow-700 font-semibold">Pending</span>
+          </li>
+          <li class="py-3 flex justify-between">
+            <span>Pemesanan <b>Dimsum Mentai, Dimsum Original</b> oleh <b>Budi Santoso</b></span>
+            <span class="text-sm text-gray-700 font-semibold">Dibatalkan</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Tombol Navigasi Cepat -->
+      <div class="grid grid-cols-3 gap-6">
+        <a href="transaksi.html" class="bg-sunny text-maroon p-6 rounded-xl text-center font-semibold hover:bg-ruby hover:text-cotton transition shadow">
+          💳 Kelola Transaksi
+        </a>
+        <a href="#" class="bg-green-500 text-white p-6 rounded-xl text-center font-semibold hover:bg-green-700 transition shadow">
+          📦 Lihat Produk
+        </a>
+        <a href="#" class="bg-ruby text-cotton p-6 rounded-xl text-center font-semibold hover:bg-maroon transition shadow">
+          📊 Laporan Usaha
+        </a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
