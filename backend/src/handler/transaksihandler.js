@@ -31,10 +31,9 @@ export const createTransaction = async (req, res) => {
     // Simpan data transaksi utama
     const [resultTransaksi] = await db.query(
       `INSERT INTO transaksi (user_id, tanggal_waktu, total_harga, metode_pembayaran)
-       VALUES (?, ?, ?, ?)`,
-      [decoded.id, tanggal_waktu, 0, metode_pembayaran]
+   VALUES (?, ?, ?, ?)`,
+      [decoded.user_id, tanggal_waktu, 0, metode_pembayaran] // 
     );
-
     const transaksi_id = resultTransaksi.insertId;
 
     // Simpan detail produk
