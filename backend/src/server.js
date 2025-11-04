@@ -9,6 +9,7 @@ import stokRoutes from "./routes/stokroutes.js";
 import laporanRoutes from "./routes/laporanroutes.js";
 import laporanKeuanganRoutes from "./routes/laporankeuanganroutes.js";
 import pengeluaranRoutes from './routes/pengeluaranRoutes.js';
+import dashboardRoutes from './routes/dashboardroutes.js';
 
 dotenv.config();
 
@@ -34,6 +35,7 @@ app.use("/api/admin", laporanRoutes);
 app.use("/api", laporanRoutes);
 app.use("/api", laporanKeuanganRoutes);
 app.use("/api/pengeluaran", pengeluaranRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 
 
 app.get("/", (req, res) => {
