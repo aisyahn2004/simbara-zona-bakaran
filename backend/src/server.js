@@ -6,6 +6,9 @@ import db from "./config/db.js";
 import authRoutes from "./routes/authroutes.js";
 import transactionRoutes from "./routes/transaksiroutes.js";
 import stokRoutes from "./routes/stokroutes.js";
+import laporanRoutes from "./routes/laporanroutes.js";
+import laporanKeuanganRoutes from "./routes/laporankeuanganroutes.js";
+import pengeluaranRoutes from './routes/pengeluaranRoutes.js';
 
 dotenv.config();
 
@@ -27,6 +30,11 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/transaksi", transactionRoutes);
 app.use("/api/admin", stokRoutes);
+app.use("/api/admin", laporanRoutes);
+app.use("/api", laporanRoutes);
+app.use("/api", laporanKeuanganRoutes);
+app.use("/api/pengeluaran", pengeluaranRoutes);
+
 
 app.get("/", (req, res) => {
   res.send("Zona Bakaran API is running");

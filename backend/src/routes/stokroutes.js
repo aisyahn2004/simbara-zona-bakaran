@@ -7,7 +7,7 @@ import {
   getSalesReport,
   getExpenseReport
 } from "../handler/stokhandler.js";
-import verifyToken from "../middlewares/verifyToken.js";
+import { verifyToken } from "../middlewares/verifyToken.js";
 
 const router = express.Router();
 

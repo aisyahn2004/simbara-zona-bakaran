@@ -5,6 +5,7 @@ import Joi from "joi";
 import dotenv from "dotenv";
 
 dotenv.config();
+console.log("JWT_SECRET =", process.env.JWT_SECRET);
 
 // REGISTER
 export const register = async (req, res) => {
