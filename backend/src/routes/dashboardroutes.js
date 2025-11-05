@@ -1,6 +1,6 @@
 import express from "express";
-import { getDashboard, getAktivitasTerbaru } from "../handler/dashboardhandler";
-import { verifyToken, verifyAdmin } from "../middlewares/verifyToken";
+import { getDashboard, getAktivitasTerbaru } from "../handler/dashboardhandler.js";
+import { verifyToken, verifyAdmin } from "../middlewares/verifyToken.js";
 
 const router = express.Router();
 
