@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZonaBakaran | Laporan Penjualan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            maroon: '#630000',
+            ruby: '#A6171C',
+            cotton: '#EDEBDD',
+            natural: '#D6D0C5',
+            sunny: '#F1C045',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-cotton text-maroon font-sans flex">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-maroon text-cotton min-h-screen p-6 fixed left-0 top-0">
+    <h2 class="text-2xl font-bold mb-8">ZonaBakaran</h2>
+    <nav class="space-y-3">
+      <a href="beranda.html" class="block py-2 px-3 rounded hover:bg-ruby">🏠 Beranda</a>
+      <a href="penjualan.html" class="block py-2 px-3 rounded hover:bg-ruby">💳 Laporan Penjualan</a>
+      <a href="produk.html" class="block py-2 px-3 rounded hover:bg-ruby">📦 Produk dan Stok</a>
+      <a href="lap_keu.html" class="block py-2 px-3 rounded bg-ruby">📊 Laporan Keuangan</a>
+      <a href="Pengaturan.html" class="block py-2 px-3 rounded hover:bg-ruby">⚙️ Pengaturan</a>
+    </nav>
+  </aside>
+
+  <!-- Konten utama -->
+  <main class="flex-1 ml-64">
+
+    <!-- Header (Diperbaiki agar fixed di atas) -->
+    <header class="bg-maroon text-cotton shadow-sm p-4 flex justify-between items-center fixed top-0 left-64 right-0 z-50">
+      <div class="flex items-center gap-3">
+        <img src="/frontend/assets/logo.png" alt="Logo ZonaBakaran" class="w-10 h-10 rounded-full">
+        <h1 class="text-xl font-bold tracking-wide">Sistem Manajemen</h1>
+      </div>
+      <button class="bg-sunny text-maroon px-4 py-2 rounded font-semibold hover:bg-ruby hover:text-cotton transition">
+        Logout
+      </button>
+    </header>
+
+    <!-- Konten halaman  -->
+    <section class="p-8 mt-24">
+      <h2 class="text-2xl font-bold mb-2">Laporan Keuangan</h2>
+      <p class="text-sm text-ruby mb-6">Kelola dan pantau semua laporan keuangan di ZonaBakaran</p>
+
+      <!-- Statistik ringkas -->
+      <div class="grid grid-cols-4 gap-4 mb-8">
+        <div class="bg-white shadow p-4 rounded-lg text-center border-t-4 border-sunny">
+          <h3 class="text-lg font-semibold">Total Penjualan</h3>
+          <p class="text-2xl font-bold mt-2">500</p>
+        </div>
+        <div class="bg-white shadow p-4 rounded-lg text-center border-t-4 border-green-600">
+          <h3 class="text-lg font-semibold">Transaksi Selesai</h3>
+          <p class="text-2xl font-bold mt-2">497</p>
+        </div>
+        <div class="bg-white shadow p-4 rounded-lg text-center border-t-4 border-ruby">
+          <h3 class="text-lg font-semibold">Pesanan Baru</h3>
+          <p class="text-2xl font-bold mt-2">2</p>
+        </div>
+        <div class="bg-white shadow p-4 rounded-lg text-center border-t-4 border-gray-400">
+          <h3 class="text-lg font-semibold">Dibatalkan</h3>
+          <p class="text-2xl font-bold mt-2">3</p>
+        </div>
+      </div>
+
+      <!-- Filter Section -->
+      <div class="bg-white p-6 rounded shadow mb-8">
+        <div class="grid grid-cols-3 gap-6">
+          <div>
+            <label class="block text-gray-700">Dari</label>
+            <input type="date" class="w-full border p-2 rounded mt-1" />
+          </div>
+          <div>
+            <label class="block text-gray-700">Sampai</label>
+            <input type="date" class="w-full border p-2 rounded mt-1" />
+          </div>
+          <div>
+            <label class="block text-gray-700">Jenis Transaksi</label>
+            <select id="filterJenis" class="w-full border p-2 rounded mt-1">
+              <option>Semua</option>
+              <option>Pendapatan</option>
+              <option>Pengeluaran</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Tabel Transaksi -->
+      <div class="bg-white shadow rounded-lg p-6">
+        <div class="flex justify-between items-center mb-4">
+          <input type="text" placeholder="Cari transaksi..." class="border border-natural rounded px-3 py-2 w-1/3 focus:outline-none focus:ring-2 focus:ring-sunny">
+          <button class="bg-sunny text-maroon px-4 py-2 rounded font-semibold hover:bg-ruby hover:text-cotton transition">+ Tambah Transaksi</button>
+        </div>
+
+        <table class="min-w-full text-sm text-left border-collapse">
+          <thead class="bg-natural text-maroon">
+            <tr>
+              <th class="p-3">Tanggal</th>
+              <th class="p-3">Keterangan</th>
+              <th class="p-3">Kategori</th>
+              <th class="p-3">Jenis</th>
+              <th class="p-3">Jumlah</th>
+              <th class="p-3">Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b hover:bg-cotton" data-jenis="Pengeluaran">
+              <td class="p-3">27 Okt 2025</td>
+              <td class="p-3">Pembelian Bahan Ayam</td>
+              <td class="p-3">Bahan Baku</td>
+              <td class="p-3 text-red-600 font-semibold">Pengeluaran</td>
+              <td class="p-3">Rp 300.000</td>
+              <td class="p-3"><button class="text-ruby hover:underline">Detail</button></td>
+            </tr>
+            <tr class="border-b hover:bg-cotton" data-jenis="Pendapatan">
+              <td class="p-3">27 Okt 2025</td>
+              <td class="p-3">Penjualan Dimsum Mentai</td>
+              <td class="p-3">Penjualan</td>
+              <td class="p-3 text-green-600 font-semibold">Pendapatan</td>
+              <td class="p-3">Rp 20.000</td>
+              <td class="p-3"><button class="text-ruby hover:underline">Detail</button></td>
+            </tr>
+            <tr class="border-b hover:bg-cotton" data-jenis="Pendapatan">
+             <td class="p-3">27 Okt 2025</td>
+              <td class="p-3">Penjualan Dimsum Mentai</td>
+              <td class="p-3">Penjualan</td>
+              <td class="p-3 text-green-600 font-semibold">Pendapatan</td>
+              <td class="p-3">Rp 20.000</td>
+              <td class="p-3"><button class="text-ruby hover:underline">Detail</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+
+<script>
+  const filterSelect = document.getElementById("filterJenis");
+
+  filterSelect.addEventListener("change", function () {
+    const selected = this.value;
+    const rows = document.querySelectorAll("tbody tr");
+
+    rows.forEach(row => {
+      const jenis = row.getAttribute("data-jenis");
+
+      if (selected === "Semua") {
+        row.style.display = "";
+      } else if (jenis === selected) {
+        row.style.display = "";
+      } else {
+        row.style.display = "none";
+      }
+    });
+  });
+</script>
+

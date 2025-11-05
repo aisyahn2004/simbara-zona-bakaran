@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZonaBakaran | Pengaturan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            maroon: '#630000',
+            ruby: '#A6171C',
+            cotton: '#EDEBDD',
+            natural: '#D6D0C5',
+            sunny: '#F1C045',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-cotton text-maroon font-sans flex">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-maroon text-cotton min-h-screen p-6 fixed left-0 top-0">
+    <h2 class="text-2xl font-bold mb-8">ZonaBakaran</h2>
+    <nav class="space-y-3">
+      <a href="beranda.html" class="block py-2 px-3 rounded hover:bg-ruby">🏠 Beranda</a>
+      <a href="penjualan.html" class="block py-2 px-3 rounded hover:bg-ruby">💳 Laporan Penjualan</a>
+      <a href="produk.html" class="block py-2 px-3 rounded hover:bg-ruby">📦 Produk dan Stok</a>
+      <a href="lap_keu.html" class="block py-2 px-3 rounded hover:bg-ruby">📊 Laporan Keuangan</a>
+      <a href="pengaturan.html" class="block py-2 px-3 rounded bg-ruby">⚙️ Pengaturan</a>
+    </nav>
+  </aside>
+
+  <!-- Konten utama -->
+  <main class="flex-1 ml-64">
+
+    <!-- Header -->
+    <header class="bg-maroon text-cotton shadow-sm p-4 flex justify-between items-center fixed top-0 left-64 right-0 z-50">
+      <div class="flex items-center gap-3">
+        <img src="/frontend/assets/logo.png" alt="Logo ZonaBakaran" class="w-10 h-10 rounded-full">
+        <h1 class="text-xl font-bold tracking-wide">Sistem Manajemen</h1>
+      </div>
+      <button class="bg-sunny text-maroon px-4 py-2 rounded font-semibold hover:bg-ruby hover:text-cotton transition">
+        Logout
+      </button>
+    </header>
+
+    <!-- Isi halaman -->
+    <section class="p-8 mt-24">
+      <h2 class="text-2xl font-bold mb-2">Pengaturan Akun & Notifikasi</h2>
+      <p class="text-sm text-ruby mb-6">Kelola informasi akun, role, dan preferensi notifikasi di halaman ini.</p>
+
+      <div class="grid grid-cols-2 gap-6">
+
+        <!-- Profil Akun -->
+        <div class="bg-white shadow rounded-lg p-6">
+          <h3 class="text-lg font-bold mb-4">Profil Akun</h3>
+          <form class="space-y-3">
+            <div>
+              <label class="block text-maroon font-medium">Nama Lengkap</label>
+              <input type="text" class="w-full border border-natural rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sunny" value="Rizki Pratama">
+            </div>
+            <div>
+              <label class="block text-maroon font-medium">Email</label>
+              <input type="email" class="w-full border border-natural rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sunny" value="rizki@example.com">
+            </div>
+            <div>
+              <label class="block text-maroon font-medium">Password</label>
+              <input type="password" class="w-full border border-natural rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sunny" placeholder="********">
+            </div>
+            <div>
+              <label class="block text-maroon font-medium">Role</label>
+              <select class="w-full border border-natural rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sunny">
+                <option>Admin (Owner)</option>
+                <option>Staff</option>
+              </select>
+            </div>
+            <button class="bg-sunny text-maroon px-4 py-2 rounded font-semibold hover:bg-ruby hover:text-cotton transition">Simpan Profil</button>
+          </form>
+        </div>
+
+
+    </section>
+  </main>
+</body>
+</html>
