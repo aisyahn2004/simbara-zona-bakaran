@@ -65,3 +65,11 @@ Sistem ini menggunakan **MIT License** agar dapat digunakan, dimodifikasi, dan d
 ## Kontributor
 Proyek ini dikembangkan oleh tim mahasiswa untuk memenuhi tugas mata kuliah Teknologi Open-Source dan Terbaru. 
 
+| Nama Lengkap | Peran | GitHub | 
+| :--- | :--- | :--- | 
+| Hasna Nailah Azalia | System Analyst | [@hsnazll](https://github.com/hsnazll) 
+| Bunga Anggun Chintamy | Frontend Developer | [@chintamy](https://github.com/chintamy) 
+| Maura Aqlaila Rasyade | Frontend Developer | [@Mauraarasyade](https://github.com/Mauraarasyade) 
+| Widda Aulia | Backend Developer | [@widaul](https://github.com/widaul)
+| Aisyah Nurhayati | Backend Developer | [@aisyahn2004](https://github.com/aisyahn2004)
+
