@@ -6,7 +6,7 @@ INSERT INTO user (nama, role, username, password_hash) VALUES
 ('Aisyah Nurhayati', 'karyawan', 'aisyah', 'hashed_pw3'),
 ('Widda Aulia', 'karyawan', 'widda', 'hashed_pw4'),
 ('Anggun Chintamy', 'karyawan', 'anggun', 'hashed_pw5'),
-('Hasna Nailah', 'admin', 'hasna', 'hashed_pw1');
+('Hasna Nailah', 'karyawan', 'hasna', 'hashed_pw6');
 
 INSERT INTO produk (user_id, nama_produk, harga_satuan, stok_tersedia, stok_minimum) VALUES
 (2, 'Dimsum Mentai Jumbo 4pcs', 16000, 30, 5),
