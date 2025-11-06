@@ -21,7 +21,7 @@ body {
     color: var(--maroon);
 }
 
-/* Kontainer Utama */
+/* Layout Utama */
 .landing-container {
     display: flex;
     justify-content: center;
