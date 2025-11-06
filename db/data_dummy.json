@@ -1,0 +1,200 @@
+{
+  "User": [
+    {
+      "user_id": 1,
+      "nama": "Owner Zona Bakaran",
+      "role": "admin",
+      "username": "owner",
+      "password_hash": "hashed_pw1"
+    },
+    {
+      "user_id": 2,
+      "nama": "Maura Aqlaila",
+      "role": "karyawan",
+      "username": "maura",
+      "password_hash": "hashed_pw2"
+    }
+    {
+      "user_id": 3,
+      "nama": "Aisyah Nurhayati",
+      "role": "karyawan",
+      "username": "aisyah",
+      "password_hash": "hashed_pw3"
+    }
+    {
+      "user_id": 4,
+      "nama": "Widda Aulia",
+      "role": "karyawan",
+      "username": "widda",
+      "password_hash": "hashed_pw4"
+    }
+    {
+      "user_id": 5,
+      "nama": "Bunga Chintamy",
+      "role": "karyawan",
+      "username": "chintamy",
+      "password_hash": "hashed_pw5"
+    }
+    {
+      "user_id": 6,
+      "nama": "Hasna Nailah",
+      "role": "karyawan",
+      "username": "hasna",
+      "password_hash": "hashed_pw6"
+    }
+
+  ],
+  "Produk": [
+    { "produk_id": 1, "user_id": 1, "nama_produk": "Dimsum Mentai Jumbo 4pcs", "harga_satuan": 16000, "stok_tersedia": 50, "stok_minimum": 10 },
+    { "produk_id": 2, "user_id": 1, "nama_produk": "Dimsum Mentai Jumbo 5pcs", "harga_satuan": 20000, "stok_tersedia": 40, "stok_minimum": 10 },
+    { "produk_id": 3, "user_id": 1, "nama_produk": "Dimsum Mentai Jumbo 6pcs", "harga_satuan": 24000, "stok_tersedia": 35, "stok_minimum": 10 },
+    { "produk_id": 4, "user_id": 1, "nama_produk": "Dimsum Mentai Mini 6pcs", "harga_satuan": 18000, "stok_tersedia": 50, "stok_minimum": 10 },
+    { "produk_id": 5, "user_id": 1, "nama_produk": "Dimsum Mentai Mini 8pcs", "harga_satuan": 24000, "stok_tersedia": 50, "stok_minimum": 10 },
+    { "produk_id": 6, "user_id": 1, "nama_produk": "Dimsum Mentai Mini 10pcs", "harga_satuan": 28000, "stok_tersedia": 50, "stok_minimum": 10 },
+    { "produk_id": 7, "user_id": 1, "nama_produk": "Dimsum Kukus Jumbo 3pcs", "harga_satuan": 9000, "stok_tersedia": 60, "stok_minimum": 10 },
+    { "produk_id": 8, "user_id": 1, "nama_produk": "Dimsum Kukus Jumbo 4pcs", "harga_satuan": 12000, "stok_tersedia": 60, "stok_minimum": 10 },
+    { "produk_id": 9, "user_id": 1, "nama_produk": "Dimsum Kukus Jumbo 5pcs", "harga_satuan": 15000, "stok_tersedia": 60, "stok_minimum": 10 },
+    { "produk_id": 10, "user_id": 1, "nama_produk": "Dimsum Kukus Mini 5pcs", "harga_satuan": 10000, "stok_tersedia": 50, "stok_minimum": 10 },
+    { "produk_id": 11, "user_id": 1, "nama_produk": "Dimsum Kukus Mini 10pcs", "harga_satuan": 20000, "stok_tersedia": 50, "stok_minimum": 10 },
+    { "produk_id": 12, "user_id": 1, "nama_produk": "Dimsum Bakar 3pcs", "harga_satuan": 10000, "stok_tersedia": 40, "stok_minimum": 10 },
+    { "produk_id": 13, "user_id": 1, "nama_produk": "Dimsum Bakar 6pcs", "harga_satuan": 20000, "stok_tersedia": 40, "stok_minimum": 10 },
+    { "produk_id": 14, "user_id": 1, "nama_produk": "Dakkochi 1pcs", "harga_satuan": 5000, "stok_tersedia": 100, "stok_minimum": 20 },
+    { "produk_id": 15, "user_id": 1, "nama_produk": "Extra Chilioil", "harga_satuan": 1000, "stok_tersedia": 200, "stok_minimum": 20 }
+  ],
+  "Transaksi": [
+    {
+      "transaksi_id": 1,
+      "user_id": 2,
+      "tanggal_waktu": "2025-10-30 10:00:00",
+      "total_harga": 48000,
+      "metode_pembayaran": "tunai"
+    }
+    {
+      "transaksi_id": 2,
+      "user_id": 3,
+      "tanggal_waktu": "2025-10-30 11:30:00",
+      "total_harga": 30000,
+      "metode_pembayaran": "qris"
+    }
+    {
+      "transaksi_id": 3,
+      "user_id": 4,
+      "tanggal_waktu": "2025-10-31 09:00:00",
+      "total_harga": 25000,
+      "metode_pembayaran": "tunai"
+    }
+    {
+      "transaksi_id": 4,
+      "user_id": 5,
+      "tanggal_waktu": "2025-10-31 13:15:00",
+      "total_harga": 20000,
+      "metode_pembayaran": "qris"
+    }
+    {
+      "transaksi_id": 5,
+      "user_id": 6,
+      "tanggal_waktu": "2025-11-01 15:00:00",
+      "total_harga": 36000,
+      "metode_pembayaran": "tunai"
+    }
+  ],
+  "DetailTransaksi": [
+    { "detail_id": 1, "transaksi_id": 1, "produk_id": 1, "jumlah": 1, "subtotal": 16000 },
+    { "detail_id": 2, "transaksi_id": 1, "produk_id": 13, "jumlah": 1, "subtotal": 20000 },
+    { "detail_id": 3, "transaksi_id": 1, "produk_id": 15, "jumlah": 8, "subtotal": 8000 }
+  ],
+  "StokLog": [
+    {
+      "log_id": 1,
+      "produk_id": 1,
+      "user_id": 6,
+      "tipe_aktivitas": "masuk",
+      "jumlah_perubahan": -2,
+      "stok_sebelum": 30,
+      "stok_akhir": 28,
+      "tanggal_waktu": "2025-10-30 10:05:00"
+    }
+    {
+      "log_id": 2,
+      "produk_id": 14,
+      "user_id": 2,
+      "tipe_aktivitas": "keluar",
+      "jumlah_perubahan": -2,
+      "stok_sebelum": 50,
+      "stok_akhir": 48,
+      "tanggal_waktu": "2025-10-30 10:05:00"
+    }
+    {
+      "log_id": 3,
+      "produk_id": 3,
+      "user_id": 3,
+      "tipe_aktivitas": "keluar",
+      "jumlah_perubahan": -1,
+      "stok_sebelum": 20,
+      "stok_akhir": 19,
+      "tanggal_waktu": "2025-10-30 11:35:00"
+    }
+    {
+      "log_id": 4,
+      "produk_id": 13,
+      "user_id": 4,
+      "tipe_aktivitas": "masuk",
+      "jumlah_perubahan": -1,
+      "stok_sebelum": 25,
+      "stok_akhir": 24,
+      "tanggal_waktu": "2025-10-31 09:10:00"
+    }
+    {
+      "log_id": 5,
+      "produk_id": 10,
+      "user_id": 5,
+      "tipe_aktivitas": "keluar",
+      "jumlah_perubahan": -1,
+      "stok_sebelum": 45,
+      "stok_akhir": 44,
+      "tanggal_waktu": "2025-10-31 13:20:00"
+    }
+  ],
+  "Pengeluaran": [
+    {
+      "pengeluaran_id": 1,
+      "user_id": 1,
+      "kategori": "Bahan baku",
+      "deskripsi": "Beli 2 kotak dimsum ori",
+      "jumlah": 200000,
+      "tanggal": "2025-10-27"
+    }
+    {
+      "pengeluaran_id": 2,
+      "user_id": 2,
+      "kategori": "Bahan Tambahan",
+      "deskripsi": "Beli saus mentai dan chilioil",
+      "jumlah": 80000,
+      "tanggal": "2025-10-28"
+    }
+    {
+      "pengeluaran_id": 3,
+      "user_id": 6,
+      "kategori": "Operasional",
+      "deskripsi": "Gas dan listrik dapur",
+      "jumlah": 120000,
+      "tanggal": "2025-10-29"
+    }
+    {
+      "pengeluaran_id": 4,
+      "user_id": 4,
+      "kategori": "Kemasan",
+      "deskripsi": "Beli plastik dan stiker logo",
+      "jumlah": 60000,
+      "tanggal": "2025-10-29"
+    }
+    {
+      "pengeluaran_id": 5,
+      "user_id": 5,
+      "kategori": "Perlengkapan",
+      "deskripsi": "Beli sumpit",
+      "jumlah": 30000,
+      "tanggal": "2025-10-30"
+    }
+  ]
+}
