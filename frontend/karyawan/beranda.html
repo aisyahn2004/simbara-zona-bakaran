@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beranda</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style/beranda.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo-area">
+            <img src="assets/logo.png" alt="Logo ZonaBakaran">
+            <h1>ZonaBakaran</h1>
+        </div>
+        <nav>
+            <a href="beranda.html" class="active">Beranda</a>
+            <a href="produk.html">Produk</a>
+            <a href="transaksi.html">Transaksi</a>
+            <a href="akun.html">Akun</a>
+        </nav>
+        <button class="logout-btn" onclick="window.location.href='index.html'">Logout</button>
+    </header>
+
+    <!-- Main Content -->
+    <main class="dashboard-container">
+        <section class="welcome-section">
+            <h2>Selamat Datang di <span>SIMBARA</span></h2>
+            <p>
+                Berikut ringkasan data penjualan dan stok produk terkini yang menunjukkan hasil kerja keras tim hari
+                ini.
+                Terus pertahankan semangat dan raih penjualan yang lebih tinggi setiap harinya!
+            </p>
+        </section>
+
+        <section class="stats-grid">
+            <div class="stat-card">
+                <h3>Total Penjualan</h3>
+                <p class="stat-value">1.250</p>
+                <div class="stat-footer up">▲ Naik 12% dari kemarin</div>
+            </div>
+            <div class="stat-card">
+                <h3>Total Pemasukan</h3>
+                <p class="stat-value">Rp 37.500.000</p>
+                <div class="stat-footer up">▲ Naik 8% dari kemarin</div>
+            </div>
+            <div class="stat-card">
+                <h3>Stok Produk</h3>
+                <p class="stat-value">560</p>
+                <div class="stat-footer down">▼ Turun 5% dari kemarin</div>
+            </div>
+            <div class="stat-card">
+                <h3>Produk Terjual Hari Ini</h3>
+                <p class="stat-value">74</p>
+                <div class="stat-footer up">▲ Naik 3% dari kemarin</div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
