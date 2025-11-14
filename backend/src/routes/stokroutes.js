@@ -1,6 +1,7 @@
 import express from "express";
 import {
   addProduct,
+  getProducts,
   updateProduct,
   deleteProduct,
   getLowStockProducts,
@@ -13,6 +14,7 @@ const router = express.Router();
 
 // Semua route ini hanya bisa diakses admin
 router.post("/produk", verifyToken, verifyAdmin, addProduct);
+router.get("/produk", verifyToken, getProducts);
 router.put("/produk/:id", verifyToken, verifyAdmin, updateProduct);
 router.delete("/produk/:id", verifyToken, verifyAdmin, deleteProduct);
 router.get("/produk/stokmenipis", verifyToken, verifyAdmin, getLowStockProducts);
