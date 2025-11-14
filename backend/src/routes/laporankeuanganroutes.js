@@ -1,9 +1,14 @@
 import express from "express";
-import { getLaporanKeuangan } from "../handler/laporankeuanganhandler.js";
+import { 
+  getLaporanKeuangan, 
+  getLaporanBulanan 
+} from "../handler/laporankeuanganhandler.js";
 import { verifyToken } from "../middlewares/verifyToken.js";
 
 const router = express.Router();
 
-router.get("/laporankeuangan", verifyToken, getLaporanKeuangan);
+router.get("/keuangan", verifyToken, getLaporanKeuangan);
+router.get("/bulanan", verifyToken, getLaporanBulanan);
+
 
 export default router;

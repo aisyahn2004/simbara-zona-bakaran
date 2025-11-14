@@ -2,7 +2,14 @@ import db from "../config/db.js";
 
 export const getLaporanPenjualan = async (req, res) => {
   try {
-    const { startDate, endDate } = req.query;
+    let { startDate, endDate } = req.query;
+    
+    if (!startDate || !endDate) {
+      const today = new Date();
+      const firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+      startDate = startDate || firstDayOfMonth.toISOString().split('T')[0];
+      endDate = endDate || today.toISOString().split('T')[0];
+    }
 
     const [rows] = await db.query(
       `
@@ -13,23 +20,22 @@ export const getLaporanPenjualan = async (req, res) => {
       FROM transaksi
       WHERE tanggal_waktu BETWEEN ? AND ?
       GROUP BY DATE(tanggal_waktu)
-      ORDER BY tanggal_waktu DESC
+      ORDER BY tanggal DESC
       `,
-      [startDate || '2025-01-01', endDate || '2025-12-31']
+      [startDate, endDate]
     );
 
-    // Hitung total keseluruhan
-    const totalPenjualan = rows.reduce((acc, r) => acc + Number(r.total_harian), 0);
-    const jumlahTransaksi = rows.reduce((acc, r) => acc + Number(r.jumlah_transaksi), 0);
+    const totalPenjualan = rows.reduce((acc, r) => acc + Number(r.total_harian || 0), 0);
+    const jumlahTransaksi = rows.reduce((acc, r) => acc + Number(r.jumlah_transaksi || 0), 0);
 
     res.status(200).json({
-      periode: `${startDate || '2025-01-01'} - ${endDate || '2025-12-31'}`,
+      periode: `${startDate} - ${endDate}`,
       total_penjualan: totalPenjualan,
       jumlah_transaksi: jumlahTransaksi,
       rincian: rows
     });
   } catch (error) {
-    console.error(error);
+    console.error("Error detail:", error);
     res.status(500).json({ message: "Gagal mengambil laporan penjualan" });
   }
 };
