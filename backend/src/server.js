@@ -10,6 +10,7 @@ import laporanRoutes from "./routes/laporanroutes.js";
 import laporanKeuanganRoutes from "./routes/laporankeuanganroutes.js";
 import pengeluaranRoutes from './routes/pengeluaranRoutes.js';
 import dashboardRoutes from './routes/dashboardroutes.js';
+import stokDimsumRoutes from "./routes/stokdimsumroutes.js";
 
 dotenv.config();
 
@@ -36,6 +37,7 @@ app.use("/api", laporanRoutes);
 app.use("/api", laporanKeuanganRoutes);
 app.use("/api/pengeluaran", pengeluaranRoutes);
 app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/stok", stokDimsumRoutes);
 
 
 app.get("/", (req, res) => {
