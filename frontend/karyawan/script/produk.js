@@ -1,4 +1,5 @@
 const grid = document.getElementById('productGrid');
+
 const modal = document.getElementById('productModal');
 const addBtn = document.getElementById('addProductBtn');
 const saveBtn = document.getElementById('saveProduct');
@@ -9,6 +10,9 @@ const modalTitle = document.getElementById('modalTitle');
 let editingCard = null;
 let imageData = "";
 
+// =====================
+// Preview gambar
+// =====================
 imageInput.addEventListener('change', (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -21,7 +25,9 @@ imageInput.addEventListener('change', (e) => {
     }
 });
 
+// =====================
 // Tambah produk
+// =====================
 addBtn.addEventListener('click', () => {
     modal.style.display = 'flex';
     modalTitle.textContent = 'Tambah Produk Baru';
@@ -34,7 +40,9 @@ addBtn.addEventListener('click', () => {
     document.getElementById('productPrice').value = "";
 });
 
-// Simpan produk baru/produk hasil edit
+// =====================
+// Simpan produk baru/edit
+// =====================
 saveBtn.addEventListener('click', () => {
     const name = document.getElementById('productName').value.trim();
     const desc = document.getElementById('productDesc').value.trim();
@@ -43,13 +51,11 @@ saveBtn.addEventListener('click', () => {
 
     if (name && desc && price) {
         if (editingCard) {
-            // mode edit
             editingCard.querySelector('img').src = img;
             editingCard.querySelector('h3').textContent = name;
             editingCard.querySelector('p').textContent = desc;
             editingCard.querySelector('.price').textContent = price;
         } else {
-            // mode tambah
             const card = document.createElement('div');
             card.classList.add('card');
             card.innerHTML = `
@@ -66,23 +72,27 @@ saveBtn.addEventListener('click', () => {
             `;
             grid.appendChild(card);
         }
-        saveProducts(); // simpan perubahan
+        saveProducts();
         modal.style.display = 'none';
     } else {
         alert('Mohon isi semua kolom!');
     }
 });
 
-// Tutup modal kalau klik di luar
+// =====================
+// Klik di luar modal → tutup
+// =====================
 window.addEventListener('click', (e) => {
     if (e.target === modal) modal.style.display = 'none';
 });
 
-// Hapus & Edit produk
+// =====================
+// Edit / Hapus produk
+// =====================
 grid.addEventListener('click', (e) => {
     if (e.target.classList.contains('delete')) {
         e.target.closest('.card').remove();
-        saveProducts(); // simpan perubahan setelah hapus
+        saveProducts();
     }
 
     if (e.target.classList.contains('edit')) {
@@ -103,15 +113,71 @@ grid.addEventListener('click', (e) => {
     }
 });
 
-// Simpan produk
+// =====================
+// Simpan/load local storage
+// =====================
 function saveProducts() {
     localStorage.setItem('products', grid.innerHTML);
 }
 
-// Muat produk
 function loadProducts() {
     const data = localStorage.getItem('products');
     if (data) grid.innerHTML = data;
 }
 
-window.onload = loadProducts;
+// =====================
+// FETCH PRODUK DARI BACKEND
+// =====================
+async function fetchProducts() {
+    try {
+        const token = localStorage.getItem('token');
+        if (!token) throw new Error("Token tidak ditemukan, silakan login");
+
+        const res = await fetch("http://localhost:9000/api/admin/produk", {
+            headers: { "Authorization": `Bearer ${token}` }
+        });
+
+        if (res.status === 401) {
+            throw new Error("Token tidak valid atau sudah kadaluarsa, silakan login ulang");
+        }
+
+        if (!res.ok) {
+            const text = await res.text();
+            throw new Error(`Gagal fetch produk: ${text}`);
+        }
+
+        const data = await res.json();
+        if (!Array.isArray(data)) throw new Error("Data produk tidak valid");
+
+        grid.innerHTML = "";
+        data.forEach(p => {
+            const card = document.createElement('div');
+            card.classList.add('card');
+            card.innerHTML = `
+                <img src="${p.gambar || 'assets/default.jpg'}" alt="${p.nama_produk}">
+                <div class="content">
+                    <h3>${p.nama_produk}</h3>
+                    <p>${p.deskripsi || '-'}</p>
+                    <p class="price">${Number(p.harga_satuan).toLocaleString('id-ID')}</p>
+                    <div class="actions">
+                        <button class="edit">Edit</button>
+                        <button class="delete">Hapus</button>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+    } catch (err) {
+        console.error(err);
+        grid.innerHTML = `<p style="color:gray;text-align:center;">${err.message}</p>`;
+    }
+}
+
+// =====================
+// INIT
+// =====================
+window.onload = () => {
+    loadProducts();
+    fetchProducts();
+};

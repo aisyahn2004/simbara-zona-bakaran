@@ -335,6 +335,7 @@ aside h3 {
     color: var(--maroon);
 }
 
+
 @keyframes fadeIn {
     from {
         opacity: 0;
