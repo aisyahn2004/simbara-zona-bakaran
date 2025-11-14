@@ -2,6 +2,7 @@ import db from "../config/db.js";
 import jwt from "jsonwebtoken";
 import dayjs from "dayjs";
 
+//buat nambahin transaksi
 export const createTransaction = async (req, res) => {
   try {
     //Verifikasi token login klo cuman bisa buat karyawan aja
@@ -91,3 +92,91 @@ export const createTransaction = async (req, res) => {
     res.status(500).json({ message: error.message || "Terjadi kesalahan server" });
   }
 };
+
+//buat nampilin riwayat transaksi
+export const getAlltrasaksi = async (req, res) => {
+  try {
+    const authHeader = req.headers.authorization;
+    if (!authHeader) return res.status(401).json({ message: "Token tidak ditemukan" });
+
+    const token = authHeader.split(" ")[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    if (decoded.role !== "admin") {
+      return res.status(403).json({ message: "Akses ditolak, hanya admin yang dapat melihat riwayat transaksi" });
+    }
+
+    const [rows] = await db.query(`
+      SELECT 
+        t.transaksi_id,
+        u.nama AS nama_karyawan,
+        t.tanggal_waktu,
+        t.total_harga,
+        t.metode_pembayaran,
+        GROUP_CONCAT(CONCAT(p.nama_produk, ' (', d.jumlah, 'x)') SEPARATOR ', ') AS produk_dibeli
+      FROM transaksi t
+      JOIN user u ON t.user_id = u.user_id
+      JOIN detail_transaksi d ON t.transaksi_id = d.transaksi_id
+      JOIN produk p ON d.produk_id = p.produk_id
+      GROUP BY t.transaksi_id, u.nama, t.tanggal_waktu, t.total_harga, t.metode_pembayaran
+      ORDER BY t.tanggal_waktu DESC
+    `);
+
+    res.json({
+      total_transaksi: rows.length,
+      data: rows
+    });
+  } catch (error) {
+    console.error("Error mengambil riwayat transaksi:", error);
+    res.status(500).json({ message: "Gagal mengambil riwayat transaksi" });
+  }
+};
+
+//buat nampilin detail trasaksi berdasarkan id
+export const getTransactionById = async (req, res) => {
+  try {
+    const authHeader = req.headers.authorization;
+    if (!authHeader) return res.status(401).json({ message: "Token tidak ditemukan" });
+
+    const token = authHeader.split(" ")[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    if (decoded.role !== "admin") {
+      return res.status(403).json({ message: "Akses ditolak, hanya admin yang dapat melihat detail transaksi" });
+    }
+
+    const { id } = req.params;
+
+    const [transaksiRows] = await db.query(
+      `SELECT t.*, u.nama AS nama_karyawan
+       FROM transaksi t
+       JOIN user u ON t.user_id = u.user_id
+       WHERE t.transaksi_id = ?`,
+      [id]
+    );
+
+    if (transaksiRows.length === 0) {
+      return res.status(404).json({ message: "Transaksi tidak ditemukan" });
+    }
+
+    const [detailRows] = await db.query(
+      `SELECT 
+          p.nama_produk, 
+          d.jumlah, 
+          d.subtotal
+       FROM detail_transaksi d
+       JOIN produk p ON d.produk_id = p.produk_id
+       WHERE d.transaksi_id = ?`,
+      [id]
+    );
+
+    res.json({
+      transaksi: transaksiRows[0],
+      detail_produk: detailRows
+    });
+  } catch (error) {
+    console.error("Error mengambil detail transaksi:", error);
+    res.status(500).json({ message: "Gagal mengambil detail transaksi" });
+  }
+};
+

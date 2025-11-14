@@ -21,6 +21,16 @@ export const addProduct = async (req, res) => {
   }
 };
 
+export const getProducts = async (req, res) => {
+  try {
+    const [rows] = await db.query("SELECT * FROM produk");
+    res.json(rows);
+  } catch (error) {
+    console.error("Error mengambil data produk:", error);
+    res.status(500).json({ message: "Gagal mengambil data produk" });
+  }
+};
+
 // Update Produk
 export const updateProduct = async (req, res) => {
   try {

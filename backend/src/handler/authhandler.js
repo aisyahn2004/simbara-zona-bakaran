@@ -66,19 +66,20 @@ export const login = async (req, res) => {
     );
 
     // Response berbeda tergantung role
-    if (user.role === "admin") {
-      res.json({
-        message: "Login berhasil sebagai admin",
-        redirect: "/admin/dashboard",
-        token,
-      });
-    } else {
-      res.json({
-        message: "Login berhasil sebagai karyawan",
-        redirect: "/karyawan/dashboard",
-        token,
-      });
-    }
+   if (user.role === "admin") {
+  res.json({
+    message: "Login berhasil sebagai admin",
+    redirect: "http://127.0.0.1:5500/simbarazonabakaran/frontend/admin_owner/berandaa.html",
+    token,
+  });
+} else {
+  res.json({
+    message: "Login berhasil sebagai karyawan",
+    redirect: "/frontend/karyawan/beranda.html",
+    token,
+  });
+}
+
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Terjadi kesalahan server" });
