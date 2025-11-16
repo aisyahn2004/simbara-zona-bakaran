@@ -110,6 +110,76 @@
       </div>
       <button class="checkout-btn">Bayar</button>
     </aside>
+
+    <!-- Pembayaran -->
+    <div id="pembayaran">
+      <!-- Popup Pembayaran -->
+      <div class="popup" id="paymentPopup">
+        <div class="popup-content">
+          <div class="bill-header">
+            <h2>Zona Bakaran</h2>
+            <p>Galuh Mas, Tenda Putih Masjid Puri Telukjambe</p>
+            <p id="paymentDate"></p>
+          </div>
+          <div class="bill-body">
+            <p><strong>Jenis Pesanan:</strong>
+              <select id="orderType">
+                <option value="Dine in">Dine In</option>
+                <option value="Take Away">Take Away</option>
+              </select>
+            </p>
+
+            <div class="product-list" id="paymentProducts"></div>
+
+            <div class="total-section">
+              <p>Total: <span id="paymentTotal"></span></p>
+            </div>
+
+            <div class="input-group">
+              <label>Cash</label>
+              <input type="number" id="uangCash" placeholder="Masukkan uang pelanggan">
+            </div>
+            <div class="input-group">
+              <label>Change</label>
+              <input type="text" id="uangKembalian" readonly>
+            </div>
+
+            <button id="confirmPayment">Konfirmasi Pembayaran</button>
+
+            <p style="font-size:0.8rem; margin-top:20px;">*Semua harga sudah termasuk pajak</p>
+            <p style="font-size:0.8rem;">Jam Buka: Minggu - Senin (13:30 - 22:00)</p>
+          </div>
+          <div class="thank-you">Terima Kasih!</div>
+          <button class="close-btn" id="closePayment">Tutup</button>
+        </div>
+      </div>
+
+      <!-- Popup Bill -->
+      <div class="popup" id="billPopup">
+        <div class="popup-content">
+          <div class="bill-header">
+            <h2>Zona Bakaran</h2>
+            <p>Galuh Mas, Tenda Putih Masjid Puri Telukjambe</p>
+            <p id="billDate"></p>
+          </div>
+          <div class="bill-body">
+            <p><strong>Jenis Pesanan:</strong> <span id="billOrderType"></span></p>
+
+            <div class="product-list" id="billProducts"></div>
+
+            <div class="total-section">
+              <p>Total <span id="billTotal"></span></p>
+              <p>Cash <span id="billCash"></span></p>
+              <p>Change <span id="billChange"></span></p>
+            </div>
+
+            <p style="font-size:0.8rem; margin-top:30px;">*Semua harga sudah termasuk pajak</p>
+            <p style="font-size:0.8rem;">Jam Buka: Minggu - Senin (13:30 - 22:00)</p>
+          </div>
+          <div class="thank-you">Terima Kasih!</div>
+          <button class="close-btn" id="closeBill">Tutup</button>
+        </div>
+    </div>
   </main>
   <script src="script/transaksi.js"></script>
 </body>

@@ -27,14 +27,25 @@
                 <h2>Selamat Datang</h2>
                 <p>Daftar untuk mulai menggunakan sistem hari ini.</p>
 
-                <input type="email" placeholder="Email address" required/>
-                <input type="password" placeholder="Password"/>
-                <input type="password" placeholder="Confirm Password"/>
-                <a href="login.html" class="btn-login">Daftar</a>
+                <form id="signupForm">
+                    <input type="text" id="username" placeholder="Username" required />
+                    <input type="password" id="password" placeholder="Password" required />
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
+
+                    <!-- ROLE DROPDOWN -->
+                    <select id="role" class="input-field" required>
+                        <option value="" disabled selected>Role</option>
+                        <option value="karyawan">Karyawan</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                    <a href="login.html" class="btn-login">Daftar</a>
+                </form>
 
                 <small>Have an account? <a href="login.html">Login</a></small>
             </div>
         </div>
     </div>
+
+    <script src="script/signUp.js"></script>
 </body>
 </html>

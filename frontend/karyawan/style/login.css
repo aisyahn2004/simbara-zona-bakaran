@@ -198,6 +198,7 @@ body {
   text-decoration: none;
   font-weight: 500;
   transition: 0.3s;
+  min-width: 400px;
 }
 
 .btn-login:hover {

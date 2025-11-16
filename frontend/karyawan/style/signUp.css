@@ -165,6 +165,7 @@ body {
   font-weight: 500;
   transition: 0.3s;
   margin-top: 30px;
+  min-width: 400px;
 }
 
 .btn-login:hover {
@@ -195,6 +196,35 @@ body {
   flex-direction: row-reverse;
 }
 
+.input-field {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    background-color: #ede9d5;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
+    color: gray;
+}
+
+.input-field:focus {
+    border-color: #a00000;
+}
+
+select.input-field {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+select.input-field {
+    background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+}
 
 /* Responsive */
 /* Tablet (max-width: 992px) */

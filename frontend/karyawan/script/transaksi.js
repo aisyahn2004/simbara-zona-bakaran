@@ -6,6 +6,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const totalElement = document.getElementById("total");
   const checkoutButton = document.querySelector(".checkout-btn");
 
+  // POPUP PEMBAYARAN (WAJIB ADA DI DALAM)
+  const paymentPopup = document.getElementById("paymentPopup");
+  const confirmPaymentBtn = document.getElementById("confirmPayment");
+  const closePaymentBtn = document.getElementById("closePayment");
+  const uangCash = document.getElementById("uangCash");
+  const uangKembalian = document.getElementById("uangKembalian");
+
   let allProducts = [];
   let ukuranStok = {};
   let selectedCategory = "";
@@ -23,17 +30,15 @@ document.addEventListener("DOMContentLoaded", () => {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      if (!res.ok) {
-        const text = await res.text();
-        throw new Error(`Gagal fetch stok: ${text}`);
-      }
+      if (!res.ok) throw new Error("Gagal fetch stok");
 
       const data = await res.json();
 
-      // bentuk: ukuran_id → stok
+      ukuranStok = {};
       data.forEach((u) => {
-        ukuranStok[u.ukuran_id] = u.stok; // pakai 'stok' sesuai kolom di DB
+        ukuranStok[u.ukuran_id] = u.stok;
       });
+
     } catch (err) {
       console.error(err);
       alert(err.message);
@@ -41,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ========================
-  // Hitung stok produk dari stok ukuran
+  // Hitung stok produk
   // ========================
   function hitungStokProduk(p) {
     const stokUk = ukuranStok[p.ukuran_id] || 0;
@@ -56,27 +61,23 @@ document.addEventListener("DOMContentLoaded", () => {
       const token = localStorage.getItem("token");
       if (!token) throw new Error("Token tidak ditemukan");
 
-      await fetchStokUkuran(); // ambil stok ukuran dulu
+      await fetchStokUkuran();
 
       const res = await fetch("http://localhost:9000/api/admin/produk", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      if (!res.ok) {
-        const text = await res.text();
-        throw new Error(`Gagal fetch produk: ${text}`);
-      }
+      if (!res.ok) throw new Error("Gagal fetch produk");
 
       const data = await res.json();
-      if (!Array.isArray(data)) throw new Error("Data produk tidak valid");
-
       allProducts = data;
 
       const firstCategory =
         categoryElements[0]?.querySelector("p")?.innerText.trim() || "";
-      selectedCategory = firstCategory;
 
+      selectedCategory = firstCategory;
       renderProductsByCategory(firstCategory);
+
     } catch (err) {
       console.error("Gagal fetch produk:", err);
       productGrid.innerHTML = `<p style="color:gray;text-align:center;">${err.message}</p>`;
@@ -84,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ========================
-  // RENDER PER KATEGORI
+  // RENDER PRODUK PER KATEGORI
   // ========================
   function renderProductsByCategory(category) {
     productGrid.innerHTML = "";
@@ -112,7 +113,6 @@ document.addEventListener("DOMContentLoaded", () => {
       card.innerHTML = `
         <h3>${p.nama_produk}</h3>
         <p class="price">Rp${Number(p.harga_satuan).toLocaleString("id-ID")}</p>
-        <p style="font-size:14px;color:gray;">Stok: ${stokProduk}</p>
         <div class="quantity-btns">
           <button class="btn-icon">−</button>
           <span class="quantity-value">0</span>
@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ========================
-  // KATEGORI DIKLIK
+  // KLIK KATEGORI
   // ========================
   categoryElements.forEach((cat) => {
     cat.addEventListener("click", () => {
@@ -201,8 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let subtotal = 0;
 
     if (Object.keys(cart).length === 0) {
-      cartItemsContainer.innerHTML =
-        `<p style="color:gray;text-align:center;">Keranjang masih kosong.</p>`;
+      cartItemsContainer.innerHTML = `<p style="color:gray;text-align:center;">Keranjang masih kosong.</p>`;
     }
 
     Object.values(cart).forEach((item) => {
@@ -223,46 +222,154 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ========================
-  // CHECKOUT
+  // CHECKOUT → TAMPILKAN POPUP
   // ========================
-  checkoutButton.addEventListener("click", async () => {
-    if (Object.keys(cart).length === 0) return alert("Pesanan kosong!");
-
-    const token = localStorage.getItem("token");
-    if (!token) return alert("Token tidak ditemukan, silakan login");
-
-    const products = Object.values(cart).map((item) => ({
-      produk_id: parseInt(item.produk_id),
-      jumlah: item.jumlah,
-    }));
-
-    try {
-      const res = await fetch("http://localhost:9000/api/transaksi", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ products, metode_pembayaran: "tunai" }),
-      });
-
-      const data = await res.json();
-
-      if (res.ok) {
-        alert("Transaksi berhasil!");
-        cart = {};
-        updateCartDisplay();
-        document
-          .querySelectorAll(".quantity-value")
-          .forEach((q) => (q.innerText = "0"));
-      } else {
-        alert("Gagal: " + data.message);
-      }
-    } catch (err) {
-      alert("Kesalahan koneksi.");
-      console.error(err);
+  checkoutButton.addEventListener("click", () => {
+    if (Object.keys(cart).length === 0) {
+      return alert("Pesanan kosong!");
     }
+
+    paymentPopup.style.display = "flex";
+
+    document.getElementById("paymentDate").innerText =
+      new Date().toLocaleString("id-ID");
+
+    let productListHTML = "";
+    Object.values(cart).forEach((item) => {
+      productListHTML += `
+        <p>${item.nama} (${item.jumlah}x) - Rp${(item.harga * item.jumlah).toLocaleString("id-ID")}</p>
+      `;
+    });
+    document.getElementById("paymentProducts").innerHTML = productListHTML;
+
+    const total = Object.values(cart).reduce(
+      (acc, item) => acc + item.harga * item.jumlah,
+      0
+    );
+
+    document.getElementById("paymentTotal").innerText =
+      "Rp" + total.toLocaleString("id-ID");
   });
+
+  closePaymentBtn.addEventListener("click", () => {
+    paymentPopup.style.display = "none";
+  });
+
+  document.getElementById("closeBill").addEventListener("click", () => {
+  document.getElementById("billPopup").style.display = "none";
+});
+
+
+  // ========================
+  // HITUNG KEMBALIAN
+  // ========================
+  uangCash.addEventListener("input", () => {
+    const totalText = document
+      .getElementById("paymentTotal")
+      .innerText.replace(/[^\d]/g, "");
+    const total = parseInt(totalText);
+
+    const cash = parseInt(uangCash.value) || 0;
+    let change = cash - total;
+
+    if (change < 0) change = 0;
+
+    uangKembalian.value = "Rp" + change.toLocaleString("id-ID");
+  });
+
+  // ========================
+  // KONFIRMASI PEMBAYARAN
+  // ========================
+  confirmPaymentBtn.addEventListener("click", async () => {
+  if (Object.keys(cart).length === 0) return alert("Pesanan kosong!");
+
+  const token = localStorage.getItem("token");
+  if (!token) return alert("Token tidak ditemukan, silakan login");
+
+  const cash = parseInt(uangCash.value || 0);
+  const total = parseInt(
+    document.getElementById("paymentTotal").innerText.replace(/[^\d]/g, "")
+  );
+
+  if (cash < total) return alert("Uang tidak cukup!");
+
+  const products = Object.values(cart).map((item) => ({
+    produk_id: parseInt(item.produk_id),
+    jumlah: item.jumlah,
+  }));
+
+  try {
+    const res = await fetch("http://localhost:9000/api/transaksi", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        products,
+        metode_pembayaran: "tunai",
+        cash: cash,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      return alert("Gagal: " + data.message);
+    }
+
+    // ============================
+    //  TAMPILKAN POPUP BILL
+    // ============================
+    const billPopup = document.getElementById("billPopup");
+    billPopup.style.display = "flex";
+
+    // tanggal
+    document.getElementById("billDate").innerText =
+      new Date().toLocaleString("id-ID");
+
+    // jenis pesanan
+    const tipePesanan = document.getElementById("orderType").value;
+    document.getElementById("billOrderType").innerText = tipePesanan;
+
+    // produk
+    let itemsHTML = "";
+    Object.values(cart).forEach((item) => {
+      itemsHTML += `
+        <p>${item.nama} (${item.jumlah}x) - Rp${(item.harga * item.jumlah).toLocaleString("id-ID")}</p>
+      `;
+    });
+    document.getElementById("billProducts").innerHTML = itemsHTML;
+
+    // total/cash/change
+    document.getElementById("billTotal").innerText =
+      "Rp" + total.toLocaleString("id-ID");
+    document.getElementById("billCash").innerText =
+      "Rp" + cash.toLocaleString("id-ID");
+    document.getElementById("billChange").innerText =
+      "Rp" + (cash - total).toLocaleString("id-ID");
+
+    // tutup popup pembayaran
+    paymentPopup.style.display = "none";
+    uangCash.value = "";
+    uangKembalian.value = "";
+
+    // reset keranjang
+    cart = {};
+    updateCartDisplay();
+
+    document.querySelectorAll(".quantity-value").forEach((q) => {
+      q.innerText = "0";
+    });
+
+    fetchProducts();
+
+  } catch (error) {
+    console.error(error);
+    alert("Terjadi kesalahan koneksi");
+  }
+});
+
 
   // ========================
   // INIT

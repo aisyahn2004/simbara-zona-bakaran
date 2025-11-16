@@ -348,6 +348,145 @@ aside h3 {
     }
 }
 
+/* Popup Pembayaran */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 350px;
+    text-align: center;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.bill-header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.bill-header h2 {
+    margin-bottom: 8px;
+    color: var(--maroon);
+}
+
+.bill-header p {
+    margin: 3px 0;
+    font-size: 0.8rem;
+    color: #555;
+}
+
+#paymentDate {
+    margin-bottom: 15px;
+}
+
+.bill-body {
+    text-align: left;
+}
+
+.bill-body p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+.product-list {
+    margin-top: 10px;
+    border-top: 1px dashed var(--border);
+    border-bottom: 1px dashed var(--border);
+    padding: 10px 0;
+}
+
+.product-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+
+.total-section {
+    border-top: 1px solid var(--border);
+    margin-top: 10px;
+    padding-top: 10px;
+    font-weight: bold;
+}
+
+.close-btn, #confirmPayment {
+    margin-top: 10px;
+    background: var(--sunny);
+    color: var(--dark);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    justify-content: center;
+}
+
+.close-btn:hover, #confirmPayment:hover {
+    background: #f4d25e;
+}
+
+.input-group {
+    margin: 10px 0;
+    text-align: left;
+}
+
+input {
+    width: 100%;
+    padding: 5px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+}
+.total-section p {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 4px 0;
+}
+
+.total-section p span {
+    display: inline-block;
+}
+
+.thank-you {
+    border-top: 1px dashed var(--border);
+    margin-top: 15px;
+    padding-top: 10px;
+    text-align: center;
+    font-style: italic;
+    color: var(--ruby);
+}
+
+#confirmPayment {
+    display: block;
+    margin: 15px auto 5px;
+}
+
+.bill-body p[style], .bill-body p[style*="font-size:0.8rem"] {
+    text-align: center !important;
+}
+
+#billDate {
+    margin-bottom: 15px;
+}
+
 /* Responsive */
 /* Tablet (max-width: 992px) */
 @media (max-width: 992px) {
