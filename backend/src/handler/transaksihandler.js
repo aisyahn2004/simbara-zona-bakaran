@@ -199,3 +199,46 @@ export const getTransactionById = async (req, res) => {
     res.status(500).json({ message: "Gagal mengambil detail transaksi" });
   }
 };
+
+export const getDetailHarian = async (req, res) => {
+  try {
+    const tanggal = req.query.tanggal;
+    if (!tanggal) return res.status(400).json({ message: "Tanggal harus diisi" });
+
+    const start = `${tanggal} 00:00:00`;
+    const end = `${tanggal} 23:59:59`;
+
+    const [rows] = await db.query(
+  `
+    SELECT
+      t.transaksi_id,
+      u.nama AS nama_karyawan,
+      t.total_harga,
+      t.metode_pembayaran,
+      DATE_FORMAT(t.tanggal_waktu, '%Y-%m-%d %H:%i:%s') AS tanggal_waktu
+    FROM transaksi t
+    JOIN user u ON t.user_id = u.user_id
+    WHERE t.tanggal_waktu BETWEEN ? AND ?
+    ORDER BY t.tanggal_waktu DESC
+  `,
+  [start, end]
+);
+
+
+
+    res.json({
+      tanggal,
+      jumlah_transaksi: rows.length,
+      data: rows
+    });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Gagal mengambil detail harian" });
+  }
+};
+
+
+
+
+

@@ -5,5 +5,5 @@ import { verifyToken } from "../middlewares/verifyToken.js";
 const router = express.Router();
 
 router.get("/penjualan", verifyToken, getLaporanPenjualan); // DIUBAH KE "/penjualan"
-router.get("/penjualan", getLaporanPenjualan);
+//router.get("/penjualan", getLaporanPenjualan);
 export default router;

@@ -69,7 +69,7 @@ export const login = async (req, res) => {
    if (user.role === "admin") {
   res.json({
     message: "Login berhasil sebagai admin",
-    redirect: "http://127.0.0.1:5500/simbarazonabakaran/frontend/admin_owner/berandaa.html",
+    redirect: "/adminowner/berandaa.html",
     token,
   });
 } else {

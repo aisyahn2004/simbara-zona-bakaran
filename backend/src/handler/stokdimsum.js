@@ -42,6 +42,7 @@ export const addStock = async (req, res) => {
     console.error(err);
     res.status(500).json({ message: "Gagal menambahkan stok" });
   }
+  console.log("REQ BODY =", req.body);
 };
 
 // =====================================================
