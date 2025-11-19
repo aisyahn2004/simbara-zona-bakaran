@@ -46,7 +46,6 @@ Sistem ini bersifat **open source** sehingga dapat dimodifikasi dan digunakan ol
 
 - Menambah, mengubah, atau menghapus data produk.
 - Memperbarui stok otomatis saat transaksi terjadi.
-- Notifikasi stok menipis jika stok ≤ stok_minimum.
 
 ### C. Transaksi Penjualan
 
