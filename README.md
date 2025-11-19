@@ -9,14 +9,13 @@ Sistem ini dikembangkan untuk memudahkan pengelolaan data penjualan, stok bahan,
 - Mendukung digitalisasi UMKM lokal dalam operasional bisnis.
 - Mengurangi risiko kehilangan data akibat pencatatan manual.
 - Mempermudah pemilik usaha dalam memantau penjualan, stok, dan laporan keuangan. 
-- Menyediakan sistem open source yang dapat digunakan ulang oleh UMKM lain
+- Menyediakan sistem open source yang dapat digunakan ulang oleh UMKM lain.
 
 ## Fitur Utama:
 
 - Autentikasi Pengguna: Login, logout, dan pengelolaan akun berbasis peran (Admin & Karyawan). 
 - Manajemen Penjualan: Tambah, ubah, dan hapus data produk, serta pencatatan stok otomatis setiap transaksi. 
 - Manajemen Stok: Pemantauan stok produk dan bahan baku.
-- Notifikasi Stok Menipis: Sistem memberi peringatan otomatis jika stok produk mencapai batas minimum. 
 - Laporan Keuangan: Laporan penjualan dan pengeluaran yang dapat diekspor.
 - Log Aktivitas: Riwayat kegiatan Karyawan dapat dipantau oleh Admin. 
 - Hak Akses Berbeda:
@@ -56,7 +55,7 @@ Sistem menggunakan MySQL dengan struktur database mencakup tabel:
 
 ## Dokumentasi Desain Sistem
 Lihat diagram lengkap di folder [docs/](./docs):
-- [Use Case Diagram](./docs/usecase-zonabakaran.png)
+- [Use Case Diagram](./docs/usecase-zonabakaran-fix.png)
 - [Entity Relationship Diagram (ERD)](./docs/erd-zonabakaran.png)
 
 ## Lisensi 
