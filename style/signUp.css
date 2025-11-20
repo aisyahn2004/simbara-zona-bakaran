@@ -1,0 +1,315 @@
+/* Color Palette */
+:root {
+  --maroon: #630000;
+  --cotton: #EDEBDD;
+  --ruby: #A6171C;
+  --natural: #D6D0C5;
+  --sunny: #F1C045;
+  --neutral: #FFFFFF;
+}
+
+/* Style Dasar */
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--cotton);
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: var(--maroon);
+}
+
+/* Layout Utama */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.login-box {
+  display: flex;
+  background: var(--neutral);
+  border-radius: 30px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 930px;
+  max-width: 100%;
+  position: relative;
+}
+
+/* Tombol Back */
+.back-btn {
+  position: absolute;
+  top: 15px;
+  left: 850px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--neutral);
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.back-btn a {
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.back-btn:hover {
+  color: var(--sunny);
+}
+
+.arrow-right {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid currentColor;
+  border-left: 2px solid currentColor;
+  transform: rotate(135deg);
+  margin-right: 5px;
+}
+
+/* Bagian Kiri */
+.left-box {
+  background: var(--maroon);
+  color: var(--neutral);
+  flex: 1;
+  text-align: center;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-box img {
+  width: 200px;
+  max-width: 80%;
+  height: auto;
+}
+
+.left-box .title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.left-box .desc {
+  display: inline-block;
+  width: auto;
+  white-space: nowrap;
+  font-size: 14px;
+  color: var(--natural);
+  margin-top: 0px;
+}
+
+/* Bagian Kanan */
+.right-box {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right-box h2 {
+  margin: 0;
+  font-size: 2rem;
+  color: var(--ruby);
+}
+
+.right-box p {
+  margin-bottom: 20px;
+  color: var(--maroon);
+}
+
+.right-box input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid var(--natural);
+  border-radius: 10px;
+  background: var(--cotton);
+  font-size: 16px;
+  color: var(--maroon);
+  box-sizing: border-box;
+}
+
+.right-box input:focus {
+  outline: none;
+  border-color: var(--ruby);
+}
+
+/* Tombol Login */
+.btn-login {
+  display: inline-block;
+  text-align: center;
+  background-color: var(--ruby);
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--neutral);
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+  margin-top: 30px;
+  min-width: 400px;
+}
+
+.btn-login:hover {
+  background-color: var(--sunny);
+  color: var(--maroon);
+}
+
+
+/* Link Login */
+.right-box small {
+  text-align: center;
+  margin-top: 20px;
+  color: var(--maroon);
+}
+
+.right-box small a {
+  color: var(--ruby);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.right-box small a:hover {
+  text-decoration: none;
+  color: var(--sunny);
+}
+
+.login-box {
+  flex-direction: row-reverse;
+}
+
+.input-field {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    background-color: #ede9d5;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
+    color: gray;
+}
+
+.input-field:focus {
+    border-color: #a00000;
+}
+
+select.input-field {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+select.input-field {
+    background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+}
+
+/* Responsive */
+/* Tablet (max-width: 992px) */
+@media (max-width: 992px) {
+  .login-box {
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .left-box {
+    padding: 40px 20px;
+  }
+
+  .right-box {
+    padding: 30px 25px;
+  }
+
+  .left-box .title {
+    font-size: 1.8rem;
+  }
+
+  .right-box h2 {
+    font-size: 1.8rem;
+  }
+
+  .right-box input {
+    font-size: 15px;
+  }
+}
+
+/* HP (max-width: 600px) */
+@media (max-width: 600px) {
+  body {
+    align-items: flex-start;
+    height: auto;
+  }
+
+  .login-box {
+    flex-direction: column;
+    width: 100%;
+    border-radius: 20px;
+  }
+
+  .left-box {
+    padding: 30px 10px;
+    height: auto;
+  }
+
+  .left-box img {
+    width: 150px;
+  }
+
+  .left-box .title {
+    font-size: 1.5rem;
+  }
+
+  .left-box .desc {
+    font-size: 13px;
+  }
+
+  .right-box {
+    padding: 20px;
+  }
+
+  .right-box h2 {
+    font-size: 1.5rem;
+  }
+
+  .right-box p {
+    font-size: 14px;
+  }
+
+  .right-box input {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .btn-login {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .remember {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}

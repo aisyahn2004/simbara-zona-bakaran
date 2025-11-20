@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akun</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style/akun.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo-area">
+            <img src="assets/logo.png" alt="Logo ZonaBakaran">
+            <h1>ZonaBakaran</h1>
+        </div>
+        <nav>
+            <a href="beranda.html">Beranda</a>
+            <a href="produk.html">Produk</a>
+            <a href="transaksi.html">Transaksi</a>
+            <a href="akun.html" class="active">Akun</a>
+        </nav>
+        <button class="logout-btn" onclick="window.location.href='index.html'">Logout</button>
+    </header>
+
+    <!-- Main -->
+    <main>
+        <div class="account-card">
+            <h2>Profil Akun</h2>
+            <div class="account-info">
+                <label>Name</label><input type="text" id="name" value="" readonly>
+            </div>
+            <div class="account-info">
+                <label>Username</label><input type="text" id="username" value="" readonly>
+            </div>
+            <div class="account-info">
+                <label>Password</label>
+                <div class="password-section">
+                    <input type="password" id="password" value="******" disabled>
+                </div>
+            </div>
+            <div class="account-info">
+                <label>Role</label><input type="text" id="role" value="" readonly>
+            </div>
+        </div>
+    </main>
+    <script src="script/akun.js"></script>
+</body>
+</html>

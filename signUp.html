@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style/signUp.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <!-- Tombol Back -->
+            <button class="back-btn">
+                <a href="index.html">Back<i class="arrow-right"></i></a>
+            </button>
+
+            <!-- Bagian Kiri -->
+            <div class="left-box">
+                <img src="assets/logo.png" alt="Signup Image" />
+                <p class="title">SIMBARA</p>
+                <p class="desc">Sistem Informasi Manajemen Zona Bakaran.</p>
+            </div>
+
+            <!-- Bagian Kanan -->
+            <div class="right-box">
+                <h2>Selamat Datang</h2>
+                <p>Daftar untuk mulai menggunakan sistem hari ini.</p>
+
+                <form id="signupForm">
+                    <input type="text" id="nama" placeholder="Name" required />
+                    <input type="text" id="username" placeholder="Username" required />
+                    <input type="password" id="password" placeholder="Password" required />
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
+                    <select id="role" class="input-field" required>
+                        <option value="" disabled selected>Role</option>
+                        <option value="karyawan">Karyawan</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                    <button type="submit" class="btn-login">Daftar</button>
+                </form>
+
+                <small>Have an account? <a href="login.html">Login</a></small>
+            </div>
+        </div>
+    </div>
+
+    <script src="script/signUp.js"></script>
+</body>
+</html>

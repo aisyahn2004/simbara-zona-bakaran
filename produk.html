@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Produk</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="style/produk.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo-area">
+      <img src="assets/logo.png" alt="Logo ZonaBakaran">
+      <h1>ZonaBakaran</h1>
+    </div>
+    <nav>
+      <a href="beranda.html">Beranda</a>
+      <a href="produk.html" class="active">Produk</a>
+      <a href="transaksi.html">Transaksi</a>
+      <a href="akun.html">Akun</a>
+    </nav>
+    <button class="logout-btn" onclick="window.location.href='index.html'">Logout</button>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <!-- Tombol Tambah Produk -->
+    <div class="add-btn">
+      <button id="addProductBtn">+ Tambah Produk</button>
+    </div>
+
+    <!-- Produk -->
+    <div class="grid" id="productGrid">
+      <div class="card">
+        <img src="assets/dimsumMentai.png" alt="Dimsum Mentai">
+        <div class="content">
+          <h3>Dimsum Mentai</h3>
+          <p>Dimsum dengan saus mentai creamy khas ZonaBakaran.</p>
+          <p class="price">Rp 16.000 - Rp 64.000</p>
+          <div class="actions">
+            <button class="edit">Edit</button>
+            <button class="delete">Hapus</button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="assets/dimsumTartar.png" alt="Dimsum Tartar">
+        <div class="content">
+          <h3>Dimsum Tartar</h3>
+          <p>Dimsum creamy dengan saus tartar di atasnya.</p>
+          <p class="price">Rp 16.000 - Rp 64.000</p>
+          <div class="actions">
+            <button class="edit">Edit</button>
+            <button class="delete">Hapus</button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="assets/dimsumBuldak.png" alt="Dimsum Buldak">
+        <div class="content">
+          <h3>Dimsum Buldak</h3>
+          <p>Dimsum dengan saus pedas yang bikin nagih.</p>
+          <p class="price">Rp 16.000 - Rp 64.000</p>
+          <div class="actions">
+            <button class="edit">Edit</button>
+            <button class="delete">Hapus</button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="assets/dimsumMix.png" alt="Dimsum Mix">
+        <div class="content">
+          <h3>Dimsum Mix</h3>
+          <p>Perpaduan Dimsum Buldak, Mentai, dan Tartar.</p>
+          <p class="price">Rp 16.000 - Rp 64.000</p>
+          <div class="actions">
+            <button class="edit">Edit</button>
+            <button class="delete">Hapus</button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="assets/dimsumKukus.png" alt="Dimsum Kukus">
+        <div class="content">
+          <h3>Dimsum Kukus</h3>
+          <p>Dimsum kukus hangat dengan cita rasa autentik.</p>
+          <p class="price">Rp 9.000 - Rp 20.000</p>
+          <div class="actions">
+            <button class="edit">Edit</button>
+            <button class="delete">Hapus</button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="assets/dimsumBakar.png" alt="Dimsum Bakar">
+        <div class="content">
+          <h3>Dimsum Bakar</h3>
+          <p>Dimsum smoky dengan rasa pedas yang mantap.</p>
+          <p class="price">Rp 5.000 - Rp 20.000</p>
+          <div class="actions">
+            <button class="edit">Edit</button>
+            <button class="delete">Hapus</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal tambah/edit produk -->
+  <div class="modal" id="productModal">
+    <div class="modal-content">
+      <h3 id="modalTitle">Tambah Produk Baru</h3>
+      <img id="preview" src="" alt="Preview Gambar">
+      <input type="file" id="imageInput" accept="image/*" />
+      <input type="text" id="productName" placeholder="Nama Produk" />
+      <select id="productCategory">
+        <option value="" disabled selected>Pilih Kategori</option>
+        <option value="1">Dimsum Mentai</option>
+        <option value="2">Dimsum Tartar</option>
+        <option value="3">Dimsum Buldak</option>
+        <option value="4">Dimsum Mix</option>
+        <option value="5">Dimsum Kukus</option>
+        <option value="6">Dimsum Bakar</option>
+      </select>
+      <div class="row">
+        <select id="productSize">
+          <option value="" disabled selected>Pilih Ukuran</option>
+          <option value="1">Jumbo</option>
+          <option value="2">Mini</option>
+        </select>
+        <input type="number" id="productQty" placeholder="Jumlah Pcs" min="1" />
+      </div>
+      <input type="text" id="productPrice" placeholder="Harga (contoh: Rp 20.000)" />
+      <button id="saveProduct">Simpan Produk</button>
+    </div>
+  </div>
+  <script src="script/produk.js"></script>
+</body>
+</html>

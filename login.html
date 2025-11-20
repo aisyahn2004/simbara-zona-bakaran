@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="style/login.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-box">
+      <button class="back-btn">
+        <a href="index.html"><i class="arrow-left"></i>Back</a>
+      </button>
+
+      <div class="left-box">
+        <img src="assets/logo.png" alt="Login Image" />
+        <p class="title">SIMBARA</p>
+        <p class="desc">Sistem Informasi Manajemen Zona Bakaran.</p>
+      </div>
+
+      <div class="right-box">
+        <h2>Selamat Datang</h2>
+        <p>Login untuk memulai kegiatan operasional hari ini.</p>
+
+        <!-- FORM LOGIN -->
+        <form id="loginForm">
+          <input type="text" id="username" placeholder="Username" required />
+          <input type="password" id="password" placeholder="Password" required />
+
+          <div class="remember">
+            <label>
+              <input type="checkbox" id="rememberMe" /> Remember Me
+            </label>
+          </div>
+
+          <button type="submit" class="btn-login">Login</button>
+        </form>
+
+        <small>Don't have an account? <a href="signUp.html">Sign Up</a></small>
+      </div>
+    </div>
+  </div>
+
+  <script src="script/auth.js"></script>
+</body>
+</html>
